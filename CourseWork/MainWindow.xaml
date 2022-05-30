@@ -1,0 +1,97 @@
+﻿<Window x:Class="CourseWork.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CourseWork"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="500">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="50"/>
+        </Grid.RowDefinitions>
+        <TabControl Grid.Row="0" SelectedItem="{Binding SelectedTabItem}">
+            <TabItem Name="UsersTab">
+                <TabItem.Header>
+                    <TextBlock Text="Category"/>
+                </TabItem.Header>
+                <TabItem.ContextMenu>
+                    <ContextMenu>
+                        <MenuItem Header="Update" Click="Category_Update_Click"/>
+                        <MenuItem Header="Delete" Click="Category_Delete_Click"/>
+                        <MenuItem Header="Search Title" Click="Category_Search_Title_Click"/>
+                        <MenuItem Header="Show all data" Click="Category_AllData_Click"/>
+                    </ContextMenu>
+                </TabItem.ContextMenu>
+                <ListView x:Name="ViewAllСategories" ItemsSource="{Binding AllCategoriesView}" SelectedItem="{Binding SelectedUser}">
+                    <ListView.View>
+                        <GridView >
+                            <GridViewColumn Header="Id" DisplayMemberBinding="{Binding Path= Id}"/>
+                            <GridViewColumn Header="Name" DisplayMemberBinding="{Binding Path= Title}"/>
+                            <GridViewColumn Header="Short Name" DisplayMemberBinding="{Binding Path= ShortTitle}"/>
+                        </GridView> 
+                    </ListView.View>
+                </ListView>
+            </TabItem>
+            <TabItem Name="PositionsTab">
+                <TabItem.Header>
+                    <TextBlock Text="Document"/>
+                </TabItem.Header>
+                <TabItem.ContextMenu>
+                    <ContextMenu>
+                        <MenuItem Header="Update" Click="Document_Update_Click"/>
+                        <MenuItem Header="Delete" Click="Document_Delete_Click"/>
+                        <MenuItem Header="Search Title" Click="Document_Title_Click"/>
+                        <MenuItem Header="Search Code Categoty" Click="Document_Code_Categoty_Click"/>
+                        <MenuItem Header="Search Year Creation" Click="Document_Year_Creation_Click"/>
+                        <MenuItem Header="Search Author" Click="Document_Author_Click"/>
+                        <MenuItem Header="Show all data" Click="Document_Show_All_Click"/>
+                    </ContextMenu>
+                </TabItem.ContextMenu>
+                <ListView x:Name="ViewAllDocuments">
+                    <ListView.View>
+                        <GridView>
+                            <GridViewColumn Header="Id"/>
+                            <GridViewColumn Header="Title"/>
+                            <GridViewColumn Header="Description"/>
+                            <GridViewColumn Header="Code Category"/>
+                            <GridViewColumn Header="Year Creation"/>
+                            <GridViewColumn Header="Author"/>
+                        </GridView>
+                    </ListView.View>
+                </ListView>
+            </TabItem>
+            <TabItem Name="DepartmentsTab">
+                <TabItem.Header>
+                    <TextBlock Text="Archive"/>
+                </TabItem.Header>
+                <TabItem.ContextMenu>
+                    <ContextMenu>
+                        <MenuItem Header="Update" Click="Archive_Update_Click"/>
+                        <MenuItem Header="Delete" Click="Archive_Delete_Click"/>
+                        <MenuItem Header="Search Code Document" Click="Archive_Code_Document_Click"/>
+                        <MenuItem Header="Search Name Employee" Click="Archive_Name_Employee_Click"/>
+                        <MenuItem Header="Show all data" Click="Archive_Show_All_Click"/>
+                    </ContextMenu>
+                </TabItem.ContextMenu>
+                <ListView x:Name="ViewAllArchives">
+                    <ListView.View>
+                        <GridView>
+                            <GridViewColumn Header="Id"/>
+                            <GridViewColumn Header="Code Document"/>
+                            <GridViewColumn Header="Date Creation"/>
+                            <GridViewColumn Header="Name Employee"/>
+                        </GridView>
+                    </ListView.View>
+                </ListView>
+            </TabItem>
+        </TabControl>
+        <StackPanel Grid.Row="1" Orientation="Horizontal"
+                    HorizontalAlignment="Left">
+            <Button x:Name="Button" Content="New Category" Click="Button_Click"/>
+            <Button Content="New Document" Click="Button_Click_1"/>
+            <Button Content="New Archive" Click="Button_Click_2" />
+        </StackPanel>
+    </Grid>
+</Window>
